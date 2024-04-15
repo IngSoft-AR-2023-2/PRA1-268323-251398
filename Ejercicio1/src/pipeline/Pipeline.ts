@@ -2,6 +2,7 @@
 import { EventEmitter } from 'events';
 // Importa la interfaz IQueue, que define los métodos que debe tener cualquier cola que usemos.
 import { IQueue } from '../queues/IQueue';
+import { Console } from 'console';
 
 // Define el tipo FilterFunction, que es una función que toma cualquier entrada y devuelve cualquier salida.
 type FilterFunction<T> = (input: T) => T;

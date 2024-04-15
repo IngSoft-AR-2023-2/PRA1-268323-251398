@@ -13,29 +13,29 @@ const port: number = 4000;
 app.use(express.json());
 
 app.post('/clients', (req: Request, res: Response) => {
-  //console.log('Received data:', req.body);
 
   const cliente = convertirJsonACustomData(req.body);
-  console.log(cliente)
-  const queueFactory = QueueFactory.getQueueFactory<CustomData>;
 
+  const queueFactory = QueueFactory.getQueueFactory<CustomData>;
   const pipeline = new Pipeline<CustomData>([phoneNumberFilter, asistenciaMovilidadFilter], queueFactory);
 
-  let result: { status: number, message: string } = { status: 500, message: "Error del servidor" };
-
-  pipeline.on('finalOutput', (output) => {
-    const outputMessage = `Salida final: ${output.data}\n`;
-    res.status(200).send({ message: `Salida final: ${output.data}` });
+  pipeline.on('finalOutput', (output: CustomData) => {
+    res.status(200).send({ message: `Se ha finalizado satisfactoriamente el proceso de agenda para la persona ${output.nombre} ${output.apellido}.` });
   });
 
   pipeline.on('errorInFilter', (error, data) => {
-    res.status(400).send({ message: `Error en el filtro: ${error}, Datos: ${data.data}` });
+    res.status(400).send({ message: `No se ha podido agendar ${data.nombre} ${data.apellido}.` });
   });
 
-  //for (const client of clientes) {
-    let dataToProcess: CustomData = cliente
+    let dataToProcess: CustomData = {
+      nombre: cliente.nombre,
+      apellido: cliente.apellido,
+      cedula: cliente.cedula,
+      telefono: cliente.telefono,
+      departamento: cliente.departamento,
+      necesita_asistencia_movilidad: cliente.necesita_asistencia_movilidad
+    }
     pipeline.processInput(dataToProcess);        
-  //}
 });
 
 app.listen(port, () => {

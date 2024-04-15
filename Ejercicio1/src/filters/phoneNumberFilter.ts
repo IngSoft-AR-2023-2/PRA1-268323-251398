@@ -1,9 +1,7 @@
 import { CustomData } from '../data-structure/CustomData';
 
-// Reemplaza cada espacio en el input por un punto.
 export const phoneNumberFilter = (input: CustomData): CustomData => {
-    let result = input.telefono.replace(/\s+/g, '');;  // Reemplaza cada espacio (' ') por un vacio ('').
-    //let result = input.telefono.trim();
+    let result = input.telefono.replace(/ /g, '');  // Reemplaza cada espacio (' ') por un vacio ('').
     if(result.length == 9){
         try {
             const telefono = Number.parseInt(result);
@@ -19,24 +17,3 @@ export const phoneNumberFilter = (input: CustomData): CustomData => {
     console.log(`Filtro phoneNumberFilter, output ${result} }`);
     return input;
 };
-
-/*export const phoneNumberFilter = (input: CustomData): CustomData => {
-    // Obtener el teléfono del objeto CustomData
-    const telefono = input.telefono;
-
-    // Eliminar espacios en blanco del teléfono
-    const telefonoSinEspacios = telefono.replace(/\s+/g, '');
-
-    // Verificar si la longitud del teléfono sin espacios es de 9 caracteres
-    const tiene9Caracteres = telefonoSinEspacios.length === 9;
-
-    // Verificar si el teléfono comienza con "09"
-    const comienzaCon09 = telefonoSinEspacios.startsWith('09');
-
-    // Si el teléfono cumple con ambas condiciones, retornar el objeto CustomData
-    if (tiene9Caracteres && comienzaCon09) {
-        return input;
-    } else {
-        throw new Error("Numero de telefono no valido.");
-    }
-};*/

@@ -44,15 +44,15 @@ export const array = [
         "apellido": "González",
         "cedula": "1122334455",
         "telefono": "098123456",
-        "departamento": "Ventas",
+        "departamento": "Rivera",
         "necesita_asistencia_movilidad": false
     },
     {
         "nombre": "Lucía",
         "apellido": "Pérez",
         "cedula": "9988776655",
-        "telefono": "099765432",
-        "departamento": "Marketing",
+        "telefono": "099 765 432",
+        "departamento": "Maldonado",
         "necesita_asistencia_movilidad": true
     },
     {
@@ -60,7 +60,23 @@ export const array = [
         "apellido": "Fernández",
         "cedula": "6677889900",
         "telefono": '1234567890',
-        "departamento": "Finanzas",
+        "departamento": "Canelones",
+        "necesita_asistencia_movilidad": false
+    },
+    {
+        "nombre": "Nahuel",
+        "apellido": "Saad",
+        "cedula": "5043821",
+        "telefono": '1234567890',
+        "departamento": "Tacuarembo",
+        "necesita_asistencia_movilidad": false
+    },
+    {
+        "nombre": "Pepe",
+        "apellido": "Lopez",
+        "cedula": "4583264",
+        "telefono": '142 658 456',
+        "departamento": "Florida",
         "necesita_asistencia_movilidad": false
     }   
 ]
