@@ -15,7 +15,8 @@ app.use(express.json());
 app.post('/clients', (req: Request, res: Response) => {
   //console.log('Received data:', req.body);
 
-  const clientes = convertirJsonACustomData(req.body);
+  const cliente = convertirJsonACustomData(req.body);
+  console.log(cliente)
   const queueFactory = QueueFactory.getQueueFactory<CustomData>;
 
   const pipeline = new Pipeline<CustomData>([phoneNumberFilter, asistenciaMovilidadFilter], queueFactory);
@@ -31,10 +32,10 @@ app.post('/clients', (req: Request, res: Response) => {
     res.status(400).send({ message: `Error en el filtro: ${error}, Datos: ${data.data}` });
   });
 
-  for (const client of clientes) {
-    let dataToProcess: CustomData = client
+  //for (const client of clientes) {
+    let dataToProcess: CustomData = cliente
     pipeline.processInput(dataToProcess);        
-  }
+  //}
 });
 
 app.listen(port, () => {

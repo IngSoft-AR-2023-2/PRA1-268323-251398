@@ -1,25 +1,23 @@
 import { CustomData } from './CustomData';
 
-export function convertirJsonACustomData(json: string): CustomData[] {
-    const datos = JSON.parse(json);
-    
-    if (!Array.isArray(datos)) {
-        throw new Error('El JSON no es un array válido de objetos CustomData.');
-    }
+interface ICustomDataInput {
+    nombre?: string;
+    apellido?: string;
+    cedula?: string;
+    telefono?: string;
+    departamento?: string;
+    necesita_asistencia_movilidad?: boolean;
+}
 
-    const customDataArray: CustomData[] = [];
+// Asegúrate de que el parámetro 'dato' cumpla con la interfaz definida.
+export function convertirJsonACustomData(dato: ICustomDataInput): CustomData {
+    const customDataObj = new CustomData();
+    customDataObj.nombre = dato.nombre || '';
+    customDataObj.apellido = dato.apellido || '';
+    customDataObj.cedula = dato.cedula || '';
+    customDataObj.telefono = dato.telefono || '';
+    customDataObj.departamento = dato.departamento || '';
+    customDataObj.necesita_asistencia_movilidad = dato.necesita_asistencia_movilidad !== undefined ? dato.necesita_asistencia_movilidad : false;
 
-    for (const dato of datos) {
-        const customDataObj = new CustomData();
-        customDataObj.nombre = dato.nombre || '';
-        customDataObj.apellido = dato.apellido || '';
-        customDataObj.cedula = dato.cedula || '';
-        customDataObj.telefono = dato.telefono || '';
-        customDataObj.departamento = dato.departamento || '';
-        customDataObj.necesita_asistencia_movilidad = dato.necesita_asistencia_movilidad || false;
-
-        customDataArray.push(customDataObj);
-    }
-
-    return customDataArray;
+    return customDataObj;
 }

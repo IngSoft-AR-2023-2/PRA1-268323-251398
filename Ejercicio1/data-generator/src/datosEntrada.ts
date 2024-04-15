@@ -1,4 +1,4 @@
-[
+export const array = [
     {
         "nombre": "Juan",
         "apellido": "Perez",
@@ -59,7 +59,7 @@
         "nombre": "Pedro",
         "apellido": "Fernández",
         "cedula": "6677889900",
-        "telefono": 1234567890,
+        "telefono": '1234567890',
         "departamento": "Finanzas",
         "necesita_asistencia_movilidad": false
     }   
