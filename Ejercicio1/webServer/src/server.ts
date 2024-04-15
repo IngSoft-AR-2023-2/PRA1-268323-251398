@@ -5,11 +5,10 @@ import { CustomData } from '../../src/data-structure/CustomData';
 import { asistenciaMovilidadFilter } from '../../src/filters/asistenciaMovilidadFilter';
 import { convertirJsonACustomData } from '../../src/data-structure/CustomJson';
 import { phoneNumberFilter } from '../../src/filters/phoneNumberFilter';
-import fs from 'fs';  // Importar fs para trabajar con el sistema de archivos.
 require('dotenv').config();
 
 const app: Express = express();
-const port: number = 3000;
+const port: number = 4000;
 
 app.use(express.json());
 

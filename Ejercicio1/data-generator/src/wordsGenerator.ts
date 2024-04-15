@@ -1,4 +1,5 @@
 import axios from 'axios';
+import personas from './datosEntrada.json'
 //import faker from 'faker';
 
 const faker = require('faker');
@@ -7,7 +8,7 @@ const faker = require('faker');
 const sendData = async () => {
     try {
       const randomWords = Array.from({ length: 10}, () => faker.random.word());
-      const response = await axios.post('http://localhost:3000/clients', randomWords);
+      const response = await axios.post('http://localhost:4000/clients', randomWords);
       console.error('Status:', response.status);
       console.log('Data sent successfully:', response.data);
     } catch (error) {
@@ -31,4 +32,6 @@ const sendData = async () => {
     }
   };
   
-  sendData();
+  //personas.forEach(element => sendData(element));
+  sendData()
+  
