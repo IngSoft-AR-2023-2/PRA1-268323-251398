@@ -2,10 +2,10 @@ import express, { Express, Request, Response } from 'express';
 import { Pipeline } from '../../src/pipeline/Pipeline';
 import { QueueFactory } from '../../src/pipeline/QueueFactory';
 import { CustomData } from '../../src/data-structure/CustomData';
-import { replaceSpacesWithDotsFilter } from '../../src/filters/replaceSpacesWithDotsFilter';
 import { asistenciaMovilidadFilter } from '../../src/filters/asistenciaMovilidadFilter';
 import { convertirJsonACustomData } from '../../src/data-structure/CustomJson';
-import fs from 'fs';
+import { phoneNumberFilter } from '../../src/filters/phoneNumberFilter';
+import fs from 'fs';  // Importar fs para trabajar con el sistema de archivos.
 require('dotenv').config();
 
 const app: Express = express();
@@ -19,7 +19,7 @@ app.post('/clients', (req: Request, res: Response) => {
   const clientes = convertirJsonACustomData(req.body);
   const queueFactory = QueueFactory.getQueueFactory<CustomData>;
 
-  const pipeline = new Pipeline<CustomData>([replaceSpacesWithDotsFilter, asistenciaMovilidadFilter], queueFactory);
+  const pipeline = new Pipeline<CustomData>([phoneNumberFilter, asistenciaMovilidadFilter], queueFactory);
 
   let result: { status: number, message: string } = { status: 500, message: "Error del servidor" };
 

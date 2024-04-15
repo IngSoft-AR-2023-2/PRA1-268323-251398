@@ -17,7 +17,7 @@ export function isDataCorrect(data: CustomData): boolean {
         return false;
     }
 
-    if (data.telefono == null || typeof data.telefono !== 'number' || data.telefono <= 0) {
+    if (!data.telefono || data.telefono.trim().length <= 9) {
         return false;
     }
 

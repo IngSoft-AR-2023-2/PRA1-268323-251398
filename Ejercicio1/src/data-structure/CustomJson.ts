@@ -14,7 +14,7 @@ export function convertirJsonACustomData(json: string): CustomData[] {
         customDataObj.nombre = dato.nombre || '';
         customDataObj.apellido = dato.apellido || '';
         customDataObj.cedula = dato.cedula || '';
-        customDataObj.telefono = dato.telefono || 0;
+        customDataObj.telefono = dato.telefono || '';
         customDataObj.departamento = dato.departamento || '';
         customDataObj.necesita_asistencia_movilidad = dato.necesita_asistencia_movilidad || false;
 
