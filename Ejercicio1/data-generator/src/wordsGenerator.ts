@@ -7,7 +7,7 @@ const faker = require('faker');
 const sendData = async () => {
     try {
       const randomWords = Array.from({ length: 10}, () => faker.random.word());
-      const response = await axios.post('http://localhost:3000/words', randomWords);
+      const response = await axios.post('http://localhost:3000/clients', randomWords);
       console.error('Status:', response.status);
       console.log('Data sent successfully:', response.data);
     } catch (error) {

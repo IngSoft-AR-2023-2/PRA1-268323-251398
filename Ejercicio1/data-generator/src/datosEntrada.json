@@ -1,0 +1,8 @@
+{
+    "nombre": "Juan",
+    "apellido": "Perez",
+    "cedula": "5.555.555-7",
+    "telefono": "098555555",
+    "departamento": "MONTEVIDEO",
+    "necesita_asistencia_movilidad": true
+}
